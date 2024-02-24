@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort
+  - repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+      - id: black
+        args: [--safe, --quiet]
+        files: ^(mstscex/.+)?[^/]+\.py$
+  - repo: https://github.com/PyCQA/flake8
+    rev: '7.0.0'
+    hooks:
+    - id: flake8
+      additional_dependencies:
+        - pycodestyle
+        - pyflakes
+        - flake8-docstrings
+        - pydocstyle
+        - flake8-comprehensions
+        - flake8-noqa
+        - mccabe
+      files: ^mstscex/.+\.py$
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.8.0'
+    hooks:
+      - id: mypy
+        args: [--strict, --ignore-missing-imports]
