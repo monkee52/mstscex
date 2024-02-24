@@ -258,7 +258,7 @@ class RdpSettings:
 
     def __str__(self) -> str:
         """Get all configuration items as a complete string."""
-        return os.linesep.join(str(self))
+        return os.linesep.join(self.lines)
 
     @property
     def signed(self) -> bool:

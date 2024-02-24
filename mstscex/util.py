@@ -97,7 +97,15 @@ class SimpleLogger:
                 if level_val < level:
                     level_str = level_name
 
-        print(f"[{level_str}]", value, *values, sep, end, file, flush=True)
+        print(
+            f"[{level_str}]",
+            value,
+            *values,
+            sep=sep,
+            end=end,
+            file=file,
+            flush=True,
+        )
 
         return self._continue_with(sep, file)
 
@@ -107,7 +115,7 @@ class SimpleLogger:
         file: TextIO | None = sys.stderr,
     ) -> _LogContinuation:
         def fn(*values: object, end: str | None = "\n") -> _LogContinuation:
-            print(values, sep, end, file, flush=True)
+            print(values, sep=sep, end=end, file=file, flush=True)
 
             return fn
 
