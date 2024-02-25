@@ -1,0 +1,7 @@
+{% if not can_ping(get_setting("alternate full address") or get_setting("full address")) %}
+gatewayhostname:s:rdgateway.example.local
+gatewayprofileusagemethod:i:1
+gatewayusagemethod:i:2
+promptcredentialsonce:i:1
+{% endif %}
+{{ sign("my.crt", "my.key") }}

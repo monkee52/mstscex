@@ -1,6 +1,7 @@
 """Signed RDP file builder."""
 
 import os
+import subprocess
 from typing import Any, Callable, TextIO, cast
 
 import jinja2
@@ -74,7 +75,9 @@ class RdpBuilder:
         """Use template to generate a file with supplied arguments."""
         line_buffer = BufferedLineIterator()
 
-        for part in self.template.generate(args=args):
+        for part in self.template.generate(
+            argv=args, args=subprocess.list2cmdline(args)
+        ):
             line_buffer.push(part)
 
             for line in line_buffer:

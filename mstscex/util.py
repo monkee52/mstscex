@@ -21,8 +21,7 @@ LogLevel = LogLevelStr | int
 class _LogContinuation(Protocol):
     def __call__(
         self, *values: object, end: str | None = "\n"
-    ) -> "_LogContinuation":
-        pass
+    ) -> "_LogContinuation": ...
 
 
 class SimpleLogger:
