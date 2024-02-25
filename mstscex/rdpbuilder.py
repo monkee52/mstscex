@@ -84,7 +84,6 @@ class RdpBuilder:
                 self.settings.parse_line(line)
 
         # handle last line
-        print(line_buffer.buffer)
         self.settings.parse_line(line_buffer.buffer)
 
         # pre sign hook
