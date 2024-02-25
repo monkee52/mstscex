@@ -1,5 +1,8 @@
 """RDP settings and related."""
 
+# Thank you to "rdpsign.py" https://github.com/nfedera/rdpsign/
+# Portions of this code from above licensed as Apache-2.0
+
 from base64 import b64encode
 from collections.abc import Iterable
 import os
@@ -68,6 +71,7 @@ class RdpSettings:
 
     REMOTE_APPLICATION_MODE = "remoteapplicationmode"
 
+    # Secured settings from "rdpsign.py""
     SECURE_SETTINGS = MappingProxyType(
         {
             "full address": "Full Address",
@@ -287,6 +291,8 @@ class RdpSettings:
 
     def sign(self, cert: bytes, key: bytes) -> None:
         """Sign this collection of settings."""
+        # Signing code modified from "rdpsign.py"
+
         # prevent hacks via alternate full address
         if self[self.ALTERNATE_FULL_ADDRESS] is None:
             if self[self.FULL_ADDRESS] is not None:
